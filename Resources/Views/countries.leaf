@@ -1,0 +1,14 @@
+#set("title") { It works }
+
+#set("body") {
+
+    <h1>Countries</h1>
+    <ul>
+    #for(country in countries) {
+        <li>The capital of #(country.name) is #(country.capital)</li>
+    }
+    </ul>
+
+}
+
+#embed("base")
