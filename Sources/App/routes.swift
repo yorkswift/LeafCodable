@@ -4,18 +4,17 @@ public func routes(_ router: Router) throws {
   
     router.get { req -> EventLoopFuture<View> in
         
-        
-        guard let countries = CountriesRepository.getSimpleCountries() else {
+        guard let simpleCountries = CountriesRepository.getSimpleCountries() else {
             
             return try req.view().render("error")
         
         }
         
-        struct CountriesContext : Encodable {
+        struct CountriesView : Encodable {
             var countries : SimpleCountries
         }
         
-        return try req.view().render("countries",CountriesContext(countries:countries))
+        return try req.view().render("countries", CountriesView(countries:simpleCountries))
     
     }
 
